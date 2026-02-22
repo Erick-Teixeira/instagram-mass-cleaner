@@ -1,4 +1,4 @@
-# 🧹 Instagram Mass Cleaner (Scripts de Limpeza em Massa)
+# 🧹 Instagram Mass Cleaner (Scripts de Limpeza em Massa) / PT-br
 
 Este repositório contém um conjunto de scripts em JavaScript criados para automatizar a limpeza do seu perfil no Instagram. Se você precisa apagar milhares de interações, estes scripts fazem o trabalho pesado por você.
 
@@ -98,3 +98,105 @@ Você pode ajustar a velocidade ou a quantidade de itens por lote alterando as v
 ```javascript
 const DELETION_BATCH_SIZE = 25; // Define quantos itens serão selecionados por vez
 const DELAY_BETWEEN_CHECKBOX_CLICKS_MS = 10; // Velocidade (em milissegundos) dos cliques
+```
+
+# 🧹 Instagram Mass Cleaner (Mass Deletion Scripts) / en-US
+
+This repository contains a set of JavaScript scripts designed to automate the cleaning of your Instagram profile. If you need to delete thousands of interactions, these scripts do the heavy lifting for you.
+
+The package includes four main tools:
+1. **Comment Remover**
+2. **Likes Remover (Unlike)**
+3. **Saved Posts Cleaner (Simple version via Console)**
+4. **Saved Posts Cleaner (Automatic version via Tampermonkey)**
+
+## ✨ Features
+
+* **Anti-Block Protection (Humanization):** The scripts use random pauses after each processed batch to simulate human behavior and avoid Instagram's *Rate Limit* restrictions.
+* **Turbo Mode:** Selects dozens of grid items almost instantly (in milliseconds), saving hours of manual clicking.
+* **Dynamic Element Search:** Survives recent Instagram web layout updates by scanning the screen text for clickable elements.
+
+---
+
+## ⚠️ Important Warnings and Limitations
+
+1. **Instagram Limits:** Even with the programmed random delays, Instagram has strict hourly/daily action limits. If the script stops or the site displays an error (like failing to delete), **you have hit the social network's limit**. Pause the script and try again after a few hours.
+2. **Dynamic Layouts:** These scripts interact directly with the site's HTML structure (DOM). If Instagram rolls out a major visual update, the selectors might break and the code will need maintenance.
+3. **Disclaimer:** Using automation scripts may violate the terms of service of some platforms. Use at your own risk.
+
+---
+
+## 🌐 Mandatory Requirement: Instagram Language
+
+For the **Comments** and **Likes** scripts to work properly, your Instagram **MUST be set to English (US)**. Since Instagram constantly changes the site's code, forcing the language to English ensures the bot accurately finds the correct buttons.
+
+**How to change your Instagram language on desktop:**
+1. Click on **More** in the left sidebar (three lines icon).
+2. Go to **Settings**.
+3. In the left menu, scroll down until you find **Language**.
+4. Change it to **English (US)**.
+*(You can switch back to your native language after you finish using the scripts!)*
+
+---
+
+## 🛠️ Preparation: The Console Trick
+
+To run scripts 1, 2, and 3, you will need to use your browser's Developer Console (DevTools):
+* **Windows/Linux:** Press `Ctrl + Shift + J` (or `F12` and go to the "Console" tab).
+* **Mac:** Press `Cmd + Option + J`.
+
+> **🛑 Browser Security Warning (Self-XSS):**
+> If this is your first time using the Console, browsers like Chrome or Edge will block you from pasting code and display a warning (often with a formatting error like `{PH1}`). 
+> **How to bypass:** Click on the console's typing line, type the exact phrase `allow pasting` and press **Enter**. After that, you can paste the scripts normally using `Ctrl + V`.
+
+---
+
+## 🚀 How to Use the Scripts
+
+### 1. Comment Cleaning (`remove-comments.js`)
+*Remember to set Instagram to English before starting!*
+1. Go to: [https://www.instagram.com/your_activity/interactions/comments](https://www.instagram.com/your_activity/interactions/comments)
+2. Open the browser Console.
+3. Paste the code from the `remove-comments.js` file and press `Enter`.
+
+### 2. Removing Likes (`remove-likes.js`)
+*Remember to set Instagram to English before starting!*
+1. Go to: [https://www.instagram.com/your_activity/interactions/likes](https://www.instagram.com/your_activity/interactions/likes)
+2. Open the browser Console.
+3. Paste the code from the `remove-likes.js` file and press `Enter`.
+
+### 3. Saved Posts Cleaning - Simple (`remove-saved-console.js`)
+Ideal for users with a few saved photos or those who prefer not to install extensions.
+1. Go to: [https://www.instagram.com/your_username/saved/](https://www.instagram.com/your_username/saved/)
+2. Click on the first saved photo to open it on the screen.
+3. Open the browser Console, paste the `remove-saved-console.js` code, and press `Enter`.
+   *(Note: If the page freezes after a few hundred deletions due to browser memory, refresh the page with F5 and repeat the process).*
+
+### 4. Saved Posts Cleaning - Automatic (`remove-saved-tampermonkey.js`)
+Recommended for users with **thousands** of saved posts. The Instagram page consumes a lot of RAM, so this script uses an extension to refresh the page automatically and prevent crashes.
+
+**How to install Tampermonkey:**
+Tampermonkey is a secure and highly popular userscript manager.
+1. Go to your browser's official store and install the extension:
+   - [Tampermonkey for Google Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+   - [Tampermonkey for Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
+   - [Tampermonkey for Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/tampermonkey/)
+2. Pin the Tampermonkey icon to your browser's top bar.
+
+**How to run the Automatic script:**
+1. Click the Tampermonkey extension icon and select **"Create a new script"**.
+2. The editor will open with default text. **Delete everything.**
+3. Copy the entire code from the `remove-saved-tampermonkey.js` file in this repository, paste it into the blank editor, and save (`Ctrl + S`).
+4. Go to your profile's saved tab: [https://www.instagram.com/your_username/saved/](https://www.instagram.com/your_username/saved/)
+5. **Do not click anything.** The script will start automatically after 3 seconds, delete a batch (e.g., 400 photos), auto-refresh (F5), and continue the loop.
+   *(Important: Remember to click the Tampermonkey icon and toggle the script off when you are done!)*
+
+---
+
+## ⚙️ Customizable Settings
+
+You can adjust the speed or batch size by changing the variables at the top of each `.js` file:
+
+```javascript
+const DELETION_BATCH_SIZE = 25; // Defines how many items will be selected per batch
+const DELAY_BETWEEN_CHECKBOX_CLICKS_MS = 10; // Speed (in milliseconds) of the clicks
